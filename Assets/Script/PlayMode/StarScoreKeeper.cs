@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -15,6 +16,8 @@ namespace YARG.PlayMode {
 			{ "guitar", new float[] { .21f, .46f, .77f, 1.85f, 3.08f, 4.52f } },
 			{ "bass", new float[] { .21f, .5f, .9f, 2.77f, 4.62f, 6.78f } },
 			{ "keys", new float[] { .21f, .46f, .77f, 1.85f, 3.08f, 4.52f } },
+			{ "guitarCoop", new float[] { .21f, .46f, .77f, 1.85f, 3.08f, 4.52f } },
+			{ "rhythm", new float[] { .21f, .46f, .77f, 1.85f, 3.08f, 4.52f } },
 			{ "realGuitar", new float[] { .21f, .46f, .77f, 1.85f, 3.08f, 4.52f } },
 			{ "realBass", new float[] { .21f, .46f, .77f, 1.85f, 3.08f, 4.52f } },
 			{ "drums", new float[] { .21f, .46f, .77f, 1.85f, 3.08f, 4.52f } },
@@ -24,25 +27,19 @@ namespace YARG.PlayMode {
 			{ "harmVocals", new float[] { 4f*0.05f, 4f*0.11f, 4f*0.19f, 4f*0.46f, 4f*0.77f, 4f*1.06f } }
 		};
 
-		// keep track of all instances to calculate the band total
+		// keep track of all instances in Play to calculate the band total
 		public static List<StarScoreKeeper> instances = new();
-		public static double TotalMax {
-			get {
-				double sum = 0;
-				foreach (var ins in instances) {
-					sum += ins.BaseScore;
-				}
-				return sum;
-			}
-		}
 
 		/// <summary>
 		/// Average of all stars earned by each instance in the currently playing band.
 		/// </summary>
 		public static double BandStars {
 			get {
-				if (instances.Count > 0)
-					return instances.Average(ins => ins.Stars);
+				// seems like players with no parts get NaN stars due to divide by 0
+				var tmp = from ins in instances where !Double.IsNaN(ins.Stars) select ins.Stars;
+				if (tmp.Count() > 0) {
+					return tmp.Average();
+				}
 				return 0;
 			}
 		}
