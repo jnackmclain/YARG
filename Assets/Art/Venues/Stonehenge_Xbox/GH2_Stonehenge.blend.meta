@@ -3,7 +3,232 @@ guid: 4a0dde71582db7947b3c253333400b98
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 22 - Default.mat
+    second: {fileID: 2100000, guid: 8ae644f59dddb12419365ff6b2b950f7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #354.mat
+    second: {fileID: 2100000, guid: a9e0b4699356f014faf5658db739839a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #371.mat
+    second: {fileID: 2100000, guid: 6c93587062a7e714cb03ee2116d22689, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #372.mat
+    second: {fileID: 2100000, guid: df466454225a115408b0aa04b87acb8e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #373.mat
+    second: {fileID: 2100000, guid: 9c01864e420c6834dae544d954320126, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #375.mat
+    second: {fileID: 2100000, guid: 4c0c28c78622d574fa3767d3518e36ef, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #387.mat
+    second: {fileID: 2100000, guid: e86cb4b6e53e2fb43810a2e4b882919f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: amp.mat
+    second: {fileID: 2100000, guid: d816c5e7d2261a24aa3b707b6535d363, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: amp_combo.mat
+    second: {fileID: 2100000, guid: 52383c0e41668da45a899fb6f7efec6e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: amp_mip.mat
+    second: {fileID: 2100000, guid: e599ff07fa9957948b240cba531ef722, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bass_amp.mat
+    second: {fileID: 2100000, guid: 6e089098cf5695143bf010cbe74e5c51, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bass_combo.mat
+    second: {fileID: 2100000, guid: fedea576e9b5dd642800df9074debcfd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: crowd_still.mat
+    second: {fileID: 2100000, guid: a2c1b40d60ab27846ba02d36433f4430, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dark_blue.mat
+    second: {fileID: 2100000, guid: edf5598dc3de31249aad4cd240f06f55, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: grass.mat
+    second: {fileID: 2100000, guid: 47d8b5240c0cab64c9627a86129012d7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: grass_light.mat
+    second: {fileID: 2100000, guid: fc2555d509571e44ebfaedda7e2f5cf9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: grass_piece.mat
+    second: {fileID: 2100000, guid: 3561266325f343045891d57f3265649c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hanglamp.mat
+    second: {fileID: 2100000, guid: 785d4cced98509d459f9e88ff44d7ecf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lantern_flare.mat
+    second: {fileID: 2100000, guid: 5903a3e4ad9b91c47a995cd10099370b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: light_body.mat
+    second: {fileID: 2100000, guid: 4e848d11cc2ac7f4f83e858cef5fa5c9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: master_can.mat
+    second: {fileID: 2100000, guid: 11ec4755fba2efd4abe7cf4220541ba9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal_strip.mat
+    second: {fileID: 2100000, guid: 6d5b22597f938d746922834582132ff2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: minicannon.mat
+    second: {fileID: 2100000, guid: 529e6ba96989bc94fa34760cc0195c6e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: moon.mat
+    second: {fileID: 2100000, guid: ecac17149b85f6a4ab2beea47cba715d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: moon_cloud.mat
+    second: {fileID: 2100000, guid: fbc9b802415ff6d42ad451442613b939, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: moon_glow.mat
+    second: {fileID: 2100000, guid: 54e2e245c68ed5a44b4b99b7713ad10e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: search_lens.mat
+    second: {fileID: 2100000, guid: 4f7a1520d50814347b16b11786a452a8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: searchlight.mat
+    second: {fileID: 2100000, guid: ccf57cd071825c040828a0a998f6460a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sky_second_stage.mat
+    second: {fileID: 2100000, guid: a4344eb26fc2a92429ff379e256039bd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: speaker_cone.mat
+    second: {fileID: 2100000, guid: 072a878d3c446674b9fe336ddb98c482, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: speakers.mat
+    second: {fileID: 2100000, guid: cf5082bbb8200d24faca89747e2239b6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: st_ampcone_nontrans.mat
+    second: {fileID: 2100000, guid: b8f573a095d33614b90209df55d21003, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: st_rockolet.mat
+    second: {fileID: 2100000, guid: 97cbccfa9b11838458477624ac7247ae, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: st_sky01.mat
+    second: {fileID: 2100000, guid: 883d5f31b92aac84a9d906c328b26410, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: st_speak01.mat
+    second: {fileID: 2100000, guid: 00659becbdecc8d4fad3d0374d2a1277, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: st_speak_nontrans.mat
+    second: {fileID: 2100000, guid: 6d98bdc1267203446bd0b662c6977df4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: st_stone01.mat
+    second: {fileID: 2100000, guid: c8cfdbe39d1edd14f85bfed087857200, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: st_stone02.mat
+    second: {fileID: 2100000, guid: 6b9041ac7e636e74587fb33e74285074, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: st_wood.mat
+    second: {fileID: 2100000, guid: 0b9b6339169838248918e7556e6147f3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: st_wood01.mat
+    second: {fileID: 2100000, guid: 281604e3fa4618f4cb1442ceab635c7f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: stagelight.mat
+    second: {fileID: 2100000, guid: adaf909cba0143a4e933e8242270c650, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: starflare.mat
+    second: {fileID: 2100000, guid: 0d1d6827cf71077428ffdba4c502ad89, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: torch_flare.mat
+    second: {fileID: 2100000, guid: 478d300410217ec43b6fa92cd620b6cd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ufo.mat
+    second: {fileID: 2100000, guid: 4e22023c04deb81478fde8eee8eae759, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ufo_particle.mat
+    second: {fileID: 2100000, guid: 21950072edf497a4898b1de41059d903, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
