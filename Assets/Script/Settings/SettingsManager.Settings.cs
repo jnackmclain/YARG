@@ -1,9 +1,12 @@
 using System.Collections.Generic;
+using System.Diagnostics;
 using SFB;
 using UnityEngine;
 using YARG.PlayMode;
 using YARG.Serialization;
 using YARG.Settings.Types;
+using YARG.UI;
+using YARG.Venue;
 
 namespace YARG.Settings {
 	public static partial class SettingsManager {
@@ -16,7 +19,7 @@ namespace YARG.Settings {
 			public IntSetting    CalibrationNumber          { get; private set; } = new(-120);
 			
 			public ToggleSetting VSync                      { get; private set; } = new(true,      VSyncCallback);
-			public ToggleSetting FpsStats                 	{ get; private set; } = new(false,    FpsCouterCallback);
+			public ToggleSetting FpsStats                   { get; private set; } = new(false,     FpsCouterCallback);
 			public IntSetting    FpsCap                     { get; private set; } = new(60, 1,     onChange: FpsCapCallback);
 			
 			public ToggleSetting LowQuality                 { get; private set; } = new(false,     LowQualityCallback);
@@ -38,7 +41,8 @@ namespace YARG.Settings {
 			public VolumeSetting SongVolume                 { get; private set; } = new(1f,   v => VolumeCallback(SongStem.Song,   v));
 			public VolumeSetting CrowdVolume                { get; private set; } = new(0.5f, v => VolumeCallback(SongStem.Crowd,  v));
 			public VolumeSetting SfxVolume                  { get; private set; } = new(0.8f, v => VolumeCallback(SongStem.Sfx,    v));
-			public VolumeSetting PreviewVolume              { get; private set; } = new(0.25f);	
+			public VolumeSetting PreviewVolume              { get; private set; } = new(0.25f);
+			public VolumeSetting MusicPlayerVolume          { get; private set; } = new(0.15f,     MusicPlayerVolumeCallback);
 			public VolumeSetting VocalMonitoring            { get; private set; } = new(0.7f,      VocalMonitoringCallback);
 			public ToggleSetting MuteOnMiss                 { get; private set; } = new(true);
 			public ToggleSetting UseStarpowerFx             { get; private set; } = new(true,      UseStarpowerFxChange);
@@ -55,6 +59,21 @@ namespace YARG.Settings {
 			
 			public void OpenSongFolderManager() {
 				GameManager.Instance.SettingsMenu.CurrentTab = "_SongFolderManager";
+			}
+
+			public void OpenVenueFolder() {
+#if UNITY_STANDALONE_WIN
+
+				// Start a file explorer process looking at the save folder
+				Process p = new();
+				p.StartInfo = new ProcessStartInfo("explorer.exe", VenueLoader.VenueFolder);
+				p.Start();
+
+#else
+			
+				GUIUtility.systemCopyBuffer = VenueLoader.VenueFolder;
+
+#endif
 			}
 
 			public void ExportOuvertSongs() {
@@ -131,6 +150,10 @@ namespace YARG.Settings {
 
 			private static void VocalMonitoringCallback(float volume) {
 				AudioManager.Instance.SetVolume("vocalMonitoring", volume);
+			}
+
+			private static void MusicPlayerVolumeCallback(float volume) {
+				HelpBar.Instance.MusicPlayer.UpdateVolume();
 			}
 
 			private static void UseStarpowerFxChange(bool value) {
