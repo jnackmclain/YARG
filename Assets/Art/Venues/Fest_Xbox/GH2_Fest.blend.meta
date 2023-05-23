@@ -1,0 +1,491 @@
+fileFormatVersion: 2
+guid: 809886655ae334240838381dfe59d3b5
+ModelImporter:
+  serializedVersion: 21300
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 08 - Default.mat
+    second: {fileID: 2100000, guid: b280d88613a27ba4dae16eb501137121, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 09 - Default.mat
+    second: {fileID: 2100000, guid: 95d3147bed7bb974ab54a5325b389309, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 10 - Default.mat
+    second: {fileID: 2100000, guid: 52d2cf287a49fdd4e879d9fee6c71b3d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: amp.mat
+    second: {fileID: 2100000, guid: 8d7750acb8276c44e9349a473b53d669, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: amp_combo.mat
+    second: {fileID: 2100000, guid: 8f325d24679d83d4aad90b068640f2e3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: amp_combo_cone.mat
+    second: {fileID: 2100000, guid: 2b932c4fec562134d8c48a295893f919, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: angel_body.mat
+    second: {fileID: 2100000, guid: 24214b9cb253b0d499b363f747da5916, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: angel_face.mat
+    second: {fileID: 2100000, guid: 62c099c25e2019e429b03ad5799077f2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: banner01.mat
+    second: {fileID: 2100000, guid: 94cebb2f11a5e064e9c42740e0cfc5a6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: banner02.mat
+    second: {fileID: 2100000, guid: 6d2e6de456746d94bae8f7989ff123e1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: banner03.mat
+    second: {fileID: 2100000, guid: f470bcc8b22a0c045983855a2349c1d2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: banner04.mat
+    second: {fileID: 2100000, guid: 5dd08e9d452417d4ba932c22049df952, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: banner_vault.mat
+    second: {fileID: 2100000, guid: ab0e83dc93ea0ee45865d4fdf965dcbe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bass_amp.mat
+    second: {fileID: 2100000, guid: 1c3b6fcaa2d223e4fab41fc9ea57ecdd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bass_combo.mat
+    second: {fileID: 2100000, guid: 4280c74ffa5b55842b39ff4db11376e7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blue_cone.mat
+    second: {fileID: 2100000, guid: e68627273dcbfc7438629f86a1b651d4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: brushed_steel.mat
+    second: {fileID: 2100000, guid: 4c593c73ed21bc4419ca473bbdfdcef3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bus.mat
+    second: {fileID: 2100000, guid: 232352c47b1e6574dba49944fd221c23, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cliff_mip.mat
+    second: {fileID: 2100000, guid: 31fdbf02af64e0f478de8b59cca6fb7d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: clutter_pedal_array.mat
+    second: {fileID: 2100000, guid: 4c5580ad1dc76e649a85debe7afaf363, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: clutter_pedal_wah.mat
+    second: {fileID: 2100000, guid: 64ed9bba37a67144f922db6606b43b9a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: clutter_undies.mat
+    second: {fileID: 2100000, guid: e782f70e71c649d4ca17d451fb13167f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: crypt_crack.mat
+    second: {fileID: 2100000, guid: d770d77ef7f2ea34a9c9ea8fd3c8b151, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dark_shingles.mat
+    second: {fileID: 2100000, guid: 535cb2562aa008644baceca84b64c133, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dry_ice_plane_01.mat
+    second: {fileID: 2100000, guid: 775a7c187b48dca4a8d632909ed7b8fe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dry_ice_plane_02.mat
+    second: {fileID: 2100000, guid: e12eff6618973294baffc2bfb363ff65, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: eyes.mat
+    second: {fileID: 2100000, guid: cc2c76e4ac7c6484b8c9feb98a0dfb22, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: eyes_other.mat
+    second: {fileID: 2100000, guid: 5d93a915c21b33646a72dd5c0f7cabeb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gargoyle_body.mat
+    second: {fileID: 2100000, guid: 9967311af68c33b47a772e1fd3ba389c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gargoyle_face.mat
+    second: {fileID: 2100000, guid: ea15fbd61af791d4daaf8aaea2f6d271, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: grass.mat
+    second: {fileID: 2100000, guid: d4bb601aae8cce04b9703618012386f7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gravestone_light.mat
+    second: {fileID: 2100000, guid: 20e296eaf83206b4888fc12dd046c83b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gravestones_skull.mat
+    second: {fileID: 2100000, guid: d36324fc73791a84fa3dc8f9a630f805, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gravetower.mat
+    second: {fileID: 2100000, guid: 96139dd3c8961094aaff18e5071aaaf2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green_coal.mat
+    second: {fileID: 2100000, guid: 53caaa18edca21247a7d61ae7e83b9b4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: invisible.mat
+    second: {fileID: 2100000, guid: 1092325e7fece1a469b94b38812cb166, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: iron.mat
+    second: {fileID: 2100000, guid: 1e8de878c4636c74c86194f665eb2be4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: light_body.mat
+    second: {fileID: 2100000, guid: 37c14a06141761849b73f3c1015e031c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lightbank.mat
+    second: {fileID: 2100000, guid: 4e1eaaaec838a87479f343bbf37a2f8c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lightrif_shine.mat
+    second: {fileID: 2100000, guid: c3bbbe705669bf4408269cdb27cb36a0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: master_can.mat
+    second: {fileID: 2100000, guid: 4d1266c7c50003e4abd4524a49f8cefc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal_rusty.mat
+    second: {fileID: 2100000, guid: 844e6c905e2812945962fce14ed5d9cc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: minicannon_ng.mat
+    second: {fileID: 2100000, guid: bdbfe30cd6cd8bb439c54d078cd8da65, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: moon_glow.mat
+    second: {fileID: 2100000, guid: 2324a8e887e979a41b3e61dfeb5eaed5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: moon_other.mat
+    second: {fileID: 2100000, guid: ea4d4aef02dec3642af6cf726bcb8258, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: motocross.mat
+    second: {fileID: 2100000, guid: 793aa9de8c1e131439eb86adeb2e48b4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mountain.mat
+    second: {fileID: 2100000, guid: d6ecd64a9fe50a841bb1bfad65a6a413, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: op_stagelight03.mat
+    second: {fileID: 2100000, guid: e93cb235f0bb10645836eab3c7c6cb0d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pipe.mat
+    second: {fileID: 2100000, guid: df464346c932ad34a8977305be201b97, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: rising_souls.mat
+    second: {fileID: 2100000, guid: 6d31fe00d3794a448ab74e95d6a425eb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: scaffold.mat
+    second: {fileID: 2100000, guid: a06945d2fdae8e048b82e8f2842c6333, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: side_banner01.mat
+    second: {fileID: 2100000, guid: f83131b134fd3cc4c87ea178ad0fced6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: skeleton_hand.mat
+    second: {fileID: 2100000, guid: b30cf50bd3a32e94c873542fb77de1fd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: skull.mat
+    second: {fileID: 2100000, guid: 7fd651baafa19624e8fea12bd7300903, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: skull_neon.mat
+    second: {fileID: 2100000, guid: a5e9485654c79094f9aee571bd1aa9cf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: speaker_cone.mat
+    second: {fileID: 2100000, guid: c40f27d3d49d72547b631daa5b09c570, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: speakers.mat
+    second: {fileID: 2100000, guid: 8409f36ab80ce0941a02c095a16df507, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: spot_circle.mat
+    second: {fileID: 2100000, guid: 848bee894a66b4643b26ac05e6bffa57, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: stage_dark.mat
+    second: {fileID: 2100000, guid: 79ea9fc0508b26246bfeebd6668b1f52, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: stone_block.mat
+    second: {fileID: 2100000, guid: 01e8f2e8f62734b4e9d71686b213c2a2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: stone_bricks.mat
+    second: {fileID: 2100000, guid: e4837114f6d555c4587148109c9be6f0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: stone_column.mat
+    second: {fileID: 2100000, guid: 70f5dcc673abb574bb18dc878bbc1bf8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tarp.mat
+    second: {fileID: 2100000, guid: 102ed673fad64964891ba593ae4f524c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tent01.mat
+    second: {fileID: 2100000, guid: 6184a340cfcdf184aa19bf83a81e8ddf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tent02.mat
+    second: {fileID: 2100000, guid: 1c6b6419e873ae847bfa33f489cedf79, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tent_cloth_blue.mat
+    second: {fileID: 2100000, guid: 618ed5d4544cdd44a9c5bda72895105a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tent_cloth_red.mat
+    second: {fileID: 2100000, guid: 9dab61eb825dc934b836064f51b852fd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tent_flag.mat
+    second: {fileID: 2100000, guid: d82ba9c21ea39ee4dbcf4c534b472178, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tree_line.mat
+    second: {fileID: 2100000, guid: 5b562240c9b38ab469776d83ade00a37, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: van01.mat
+    second: {fileID: 2100000, guid: 923fe79fd7fa7184ca906e8840b39591, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wings.mat
+    second: {fileID: 2100000, guid: afafc12455164554db99795a4b435e31, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: zombie_hook_left_rope.mat
+    second: {fileID: 2100000, guid: d3f035197f650fb4cb6db4e105dbaa5d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: zombie_hook_right_rope.mat
+    second: {fileID: 2100000, guid: 84afc2b9e13fc0943813fe08ba328cbd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: zombie_left_eye.mat
+    second: {fileID: 2100000, guid: 899a7504459c1a045a942e466e7126da, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: zombie_neck.mat
+    second: {fileID: 2100000, guid: cce57a46fb19b6c49bd6484e545b2b98, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: zombie_right_eye.mat
+    second: {fileID: 2100000, guid: fcc62c1c3786e2141930d2823c4a8326, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: zombie_shoulderblades.mat
+    second: {fileID: 2100000, guid: 36bbfb60f56b1d14d8080ee8d01efcea, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 1
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
