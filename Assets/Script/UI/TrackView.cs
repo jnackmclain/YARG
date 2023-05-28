@@ -4,17 +4,20 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using YARG.PlayMode;
+using YARG.Settings;
 
 namespace YARG.UI {
 	public class TrackView : MonoBehaviour {
 		[field: SerializeField]
 		public RawImage TrackImage { get; private set; }
+		[SerializeField]
+		private AspectRatioFitter _aspectRatioFitter;
 
 		[Space]
 		[SerializeField]
 		private TextMeshProUGUI _performanceText;
 		[SerializeField]
-		private PerformanceTextSizer _performanceTextSizer;
+		private PerformanceTextScaler _performanceTextScaler;
 
 		[Space]
 		[SerializeField]
@@ -35,7 +38,9 @@ namespace YARG.UI {
 		private bool _soloBoxShowing = false;
 
 		private void Start() {
-			_performanceTextSizer = new(24f, 3f);
+			_performanceTextScaler = new(3f);
+			_performanceText.text = "";
+			_aspectRatioFitter.aspectRatio = (float) Screen.width / Screen.height;
 		}
 
 		public void UpdateSizing(int trackCount) {
@@ -89,17 +94,25 @@ namespace YARG.UI {
 		}
 
 		public void ShowPerformanceText(string text) {
-			StopCoroutine("SizePerformanceText");
-			StartCoroutine(SizePerformanceText(text));
+			if (SettingsManager.Settings.DisableTextNotifications.Data) {
+				return;
+			}
+
+			StopCoroutine(nameof(ScalePerformanceText));
+			StartCoroutine(ScalePerformanceText(text));
 		}
 
-		private IEnumerator SizePerformanceText(string text) {
-			_performanceText.text = text;
-			_performanceTextSizer.ResetAnimationTime();
+		private IEnumerator ScalePerformanceText(string text) {
+			var rect = _performanceText.rectTransform;
+			rect.localScale = Vector3.zero;
 
-			while (_performanceTextSizer.AnimTimeRemaining > 0f) {
-				_performanceTextSizer.AnimTimeRemaining -= Time.deltaTime;
-				_performanceText.fontSize = _performanceTextSizer.PerformanceTextFontSize();
+			_performanceText.text = text;
+			_performanceTextScaler.ResetAnimationTime();
+
+			while (_performanceTextScaler.AnimTimeRemaining > 0f) {
+				_performanceTextScaler.AnimTimeRemaining -= Time.deltaTime;
+				var scale = _performanceTextScaler.PerformanceTextScale();
+				rect.localScale = new Vector3(scale, scale, scale);
 
 				// Update animation every frame
 				yield return null;

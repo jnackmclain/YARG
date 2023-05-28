@@ -16,14 +16,11 @@ using Random = UnityEngine.Random;
 
 namespace YARG.UI.MusicLibrary {
 	public class SongSelection : MonoBehaviour {
-		public static SongSelection Instance {
-			get;
-			private set;
-		} = null;
+		public static SongSelection Instance { get; private set; }
 
 		public static bool refreshFlag = true;
 
-		private const int SONG_VIEW_EXTRA = 6;
+		private const int SONG_VIEW_EXTRA = 15;
 		private const float SCROLL_TIME = 1f / 60f;
 
 		[SerializeField]
@@ -243,7 +240,7 @@ namespace YARG.UI.MusicLibrary {
 						// Artist filter
 						var artist = arg[7..];
 						songsOut = SongContainer.Songs
-							.Where(i => RemoveDiacritics(i.Artist).Contains(RemoveDiacritics(artist)));
+							.Where(i => RemoveDiacritics(i.Artist) == RemoveDiacritics(artist));
 					} else if (arg.StartsWith("source:")) {
 						// Source filter
 						var source = arg[7..];
@@ -253,7 +250,7 @@ namespace YARG.UI.MusicLibrary {
 						// Album filter
 						var album = arg[6..];
 						songsOut = SongContainer.Songs
-							.Where(i => RemoveDiacritics(i.Album).Contains(RemoveDiacritics(album)));
+							.Where(i => RemoveDiacritics(i.Album) == RemoveDiacritics(album));
 					} else if (arg.StartsWith("charter:")) {
 						// Charter filter
 						var charter = arg[8..];
@@ -272,13 +269,20 @@ namespace YARG.UI.MusicLibrary {
 					} else if (arg.StartsWith("instrument:")) {
 						// Instrument filter
 						var instrument = arg[11..];
-						if (instrument == "band") {
+						/*f (instrument == "band") {
 							songsOut = SongContainer.Songs
 								.Where(i => i.BandDifficulty >= 0);
 						} else {
 							songsOut = SongContainer.Songs
 								.Where(i => i.HasInstrument(InstrumentHelper.FromStringName(instrument)));
-						}
+						}*/
+						songsOut = instrument switch {
+							"band" => SongContainer.Songs.Where(i => i.BandDifficulty >= 0),
+							"vocals" => SongContainer.Songs.Where(i => i.VocalParts < 2),
+							"harmVocals" => SongContainer.Songs.Where(i => i.VocalParts >= 2),
+							_ => SongContainer.Songs.Where(i =>
+								i.HasInstrument(InstrumentHelper.FromStringName(instrument))),
+						};
 					} else if (!searched) {
 						// Search
 						searched = true;
@@ -335,7 +339,11 @@ namespace YARG.UI.MusicLibrary {
 		}
 
 		private static string RemoveDiacritics(string text) {
-			var normalizedString = text?.ToLowerInvariant().Normalize(NormalizationForm.FormD);
+			if (text == null) {
+				return null;
+			}
+
+			var normalizedString = text.ToLowerInvariant().Normalize(NormalizationForm.FormD);
 			var stringBuilder = new StringBuilder(capacity: normalizedString.Length);
 
 			for (int i = 0; i < normalizedString.Length; i++) {
