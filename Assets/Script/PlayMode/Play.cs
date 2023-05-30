@@ -56,7 +56,7 @@ namespace YARG.PlayMode {
 
 		private bool audioStarted;
 		private float realSongTime;
-		public float SongTime => realSongTime - PlayerManager.AudioCalibration * speed;
+		public float SongTime => realSongTime - PlayerManager.AudioCalibration * speed - (float)Song.Delay;
 
 		public float SongLength {
 			get;
@@ -128,6 +128,10 @@ namespace YARG.PlayMode {
 
 			ScoreKeeper.Reset();
 			StarScoreKeeper.Reset();
+
+			// Force the music player to disable, and hide the help bar
+			// This is mostly for "Test Play" mode
+			Navigator.Instance.ForceHideMusicPlayer();
 			Navigator.Instance.PopAllSchemes();
 
 			backgroundRenderTexture.ClearTexture();

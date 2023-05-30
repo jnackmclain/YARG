@@ -30,15 +30,18 @@ namespace YARG {
 
 		public static IAudioManager AudioManager { get; private set; }
 
-		[field: SerializeField]
-		public SettingsMenu SettingsMenu { get; private set; }
-
 		[SerializeField]
 		private AudioMixerGroup vocalGroup;
 
 		public SceneIndex CurrentScene { get; private set; } = SceneIndex.PERSISTANT;
 
 		public SongEntry SelectedSong { get; set; }
+
+#if UNITY_EDITOR
+
+		public Util.TestPlayInfo TestPlayInfo { get; private set; }
+
+#endif
 
 		private void Awake() {
 			Instance = this;
@@ -61,6 +64,12 @@ namespace YARG {
 			AudioManager.Initialize();
 
 			StageKitHapticsManager.Initialize();
+
+#if UNITY_EDITOR
+
+			TestPlayInfo = UnityEditor.AssetDatabase.LoadAssetAtPath<Util.TestPlayInfo>("Assets/Settings/TestPlayInfo.asset");
+
+#endif
 		}
 
 		private void Start() {
