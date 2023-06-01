@@ -2076,7 +2076,7 @@ MonoBehaviour:
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 512
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 1
@@ -2310,7 +2310,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: 251d885b9688b1946ac371e2188c73dc, type: 2}
+  sharedProfile: {fileID: 11400000, guid: d9ca8d0353c447b48af4b3ffaa3d8d37, type: 2}
 --- !u!1 &1849013124
 GameObject:
   m_ObjectHideFlags: 0
@@ -2495,7 +2495,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: 251d885b9688b1946ac371e2188c73dc, type: 2}
+  sharedProfile: {fileID: 11400000, guid: d9ca8d0353c447b48af4b3ffaa3d8d37, type: 2}
 --- !u!4 &1882870258
 Transform:
   m_ObjectHideFlags: 0
