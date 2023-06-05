@@ -192,7 +192,6 @@ namespace YARG.UI.MusicLibrary {
 
 		private void ChangeSongOrder() {
 			UpdateSortLamda();
-			UpdateIndex();
 			UpdateSearch();
 			UpdateNextSortCriteria();
 			UpdateNavigationScheme();
@@ -304,7 +303,6 @@ namespace YARG.UI.MusicLibrary {
 			if (string.IsNullOrEmpty(searchField.text)) {
 				// Add all songs
 				_songs = SongContainer.Songs
-					// .OrderBy(song => GetSortName(song))
 					.OrderBy(OrderBy())
 					.Select(i => new SongViewType(i))
 					.Cast<ViewType>()
@@ -345,7 +343,7 @@ namespace YARG.UI.MusicLibrary {
 						// Artist filter
 						var artist = arg[7..];
 						songsOut = SongContainer.Songs
-							.Where(i => RemoveDiacritics(i.Artist) == RemoveDiacritics(artist));
+							.Where(i => RemoveDiacriticsAndArticle(i.Artist) == RemoveDiacriticsAndArticle(artist));
 					} else if (arg.StartsWith("source:")) {
 						// Source filter
 						var source = arg[7..];
@@ -447,6 +445,11 @@ namespace YARG.UI.MusicLibrary {
 
 		private void UpdateIndex(){
 			SongSorting.Instance.UpdateIndex(_songs);
+		}
+
+		private static string RemoveDiacriticsAndArticle(string text){
+			var textWithoutDiacretics = RemoveDiacritics(text);
+			return SongSorting.RemoveArticle(textWithoutDiacretics);
 		}
 
 		private static string RemoveDiacritics(string text) {
