@@ -1,0 +1,381 @@
+fileFormatVersion: 2
+guid: 63af1d998ee378347bb90de35a81cfe2
+ModelImporter:
+  serializedVersion: 21300
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #106.mat
+    second: {fileID: 2100000, guid: 00b3400dfe8c2924490c6a409bfb1627, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #107.mat
+    second: {fileID: 2100000, guid: c1edd6288d94a3a499c44dbeb595688f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #108.mat
+    second: {fileID: 2100000, guid: 8571f81115eda7e47b7fe8f4453c9c55, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #109.mat
+    second: {fileID: 2100000, guid: 83e1d48566933564db8feef2bb8217cd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #110.mat
+    second: {fileID: 2100000, guid: 14962aa8240b1d846bae3102c0855308, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #111.mat
+    second: {fileID: 2100000, guid: 77542099d0aa7724e8967ece7c7aa2e7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #112.mat
+    second: {fileID: 2100000, guid: a13a1e158983ace489fc6708fca62915, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #114.mat
+    second: {fileID: 2100000, guid: 280efe5d25c2d3c4f9cef29bde593bc7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #115.mat
+    second: {fileID: 2100000, guid: b7299238a81771d42a7aa1ca7910d93d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #116.mat
+    second: {fileID: 2100000, guid: 0704b853c77f74741bcdc2711226176a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #128.mat
+    second: {fileID: 2100000, guid: 6f3f051d64006fb4292d34592d6e887e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #129.mat
+    second: {fileID: 2100000, guid: ae19dba3f84203c4c9ac3bfe2de23cb3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #133.mat
+    second: {fileID: 2100000, guid: ca6b479195c28da42883536222fb430a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #134.mat
+    second: {fileID: 2100000, guid: 2cc53ec25f3bf584c8b113fd0c89b346, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #135.mat
+    second: {fileID: 2100000, guid: 56a6c9d0e219cf942ac86cabd28a117f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #136.mat
+    second: {fileID: 2100000, guid: 32a5077efb8fc4c478b6f42a694d3445, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #137.mat
+    second: {fileID: 2100000, guid: e4f95092f83887145bf1943a7a7c5f2e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #26.mat
+    second: {fileID: 2100000, guid: eed7eb16d4f7f874ebb636bac64a0b1c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #27.mat
+    second: {fileID: 2100000, guid: 78e63b3205ccd88479d9c83bb9d28f7b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #3.mat
+    second: {fileID: 2100000, guid: 9650e7e605024124099a5982a7e3a243, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #32.mat
+    second: {fileID: 2100000, guid: 98d27f033b70e1540a3c642ee84e2d8b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #38.mat
+    second: {fileID: 2100000, guid: 8704a63d7aaeabe4ab4fad0d07dd4aa1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #52.mat
+    second: {fileID: 2100000, guid: 12998375c787b8146887ee89ec6e7e36, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #53.mat
+    second: {fileID: 2100000, guid: 6226c853e6231ab43a1475442e610256, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #54.mat
+    second: {fileID: 2100000, guid: 47082869b4c096e42a26235352a501df, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #55.mat
+    second: {fileID: 2100000, guid: 169628cc35c906842b77fa7413c7d6fc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #56.mat
+    second: {fileID: 2100000, guid: 2697d26b24c373f4f8d74aa0b427c220, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Standard_4.mat
+    second: {fileID: 2100000, guid: 6608d148110a2ce44bcbe334dd6f4d01, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: amp.mat
+    second: {fileID: 2100000, guid: 108b8122a5ef9d9439090bd8f635dd5c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: arcade_gh.mat
+    second: {fileID: 2100000, guid: 86f6c3f709e12d0488cb589ae8fd83ca, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: band_shadow.mat
+    second: {fileID: 2100000, guid: 6816f3051c3f75c4fb79f6dc5bad0e8e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bathroom_door.mat
+    second: {fileID: 2100000, guid: 96d9a0e8b81be724d995839351a137ac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bulb.mat
+    second: {fileID: 2100000, guid: b4077c7c20e0c834989bd4810e903e58, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ducts_03.mat
+    second: {fileID: 2100000, guid: 5fc52778b1bc8c54295c018cd15be34c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: floor_glow.mat
+    second: {fileID: 2100000, guid: 7860eec28e68f1e4299d7129381cdf75, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: juke.mat
+    second: {fileID: 2100000, guid: 2c23454765d061649aafa325946f8ce8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: jukebox.mat
+    second: {fileID: 2100000, guid: 55880e8896eb8724d9c647299d222b01, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: op_buttons01.mat
+    second: {fileID: 2100000, guid: 0759f72e35ab0e54a87615ef23b05bf8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: op_case.mat
+    second: {fileID: 2100000, guid: a08e13626cf7df146abf1727d3836498, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: op_drumcase.mat
+    second: {fileID: 2100000, guid: 20ec03598b9237544b70aac6f3605852, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: op_guitarcase.mat
+    second: {fileID: 2100000, guid: ea55799bfff2ed54fbaa898f4aa0839a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: op_merchbox.mat
+    second: {fileID: 2100000, guid: 6e8b97ac04073f04d823c0791310b68f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: op_merchtable.mat
+    second: {fileID: 2100000, guid: bdba08a2b31399141b161771fa3d34f3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: op_pat-1.mat
+    second: {fileID: 2100000, guid: 53e01cd75395cb940b642fc27d4ccc02, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: op_records01.mat
+    second: {fileID: 2100000, guid: d5d5232fe4a8f634f9c693b5baf4a090, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: op_shirt01.mat
+    second: {fileID: 2100000, guid: 5da80beec39f2c44baeff301d00645cc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: op_stagefloor.mat
+    second: {fileID: 2100000, guid: c239b505f96faca458733fe8dbd406b2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: op_stagefront.mat
+    second: {fileID: 2100000, guid: c7e1e63be5b3f444fb35e6be91f3be68, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: op_stagelight01.mat
+    second: {fileID: 2100000, guid: 64d52e2439d67f5418863d973060b309, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: op_stagelight02.mat
+    second: {fileID: 2100000, guid: 4bccb85c56d9fac40bd01ce714b90fb2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: op_wallcolor.mat
+    second: {fileID: 2100000, guid: 10d870c923c29a84887aa3cc2bee9c84, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: paper.mat
+    second: {fileID: 2100000, guid: 38c8d3dab2fc43d4f8db0df36f118c4a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: post_tat.mat
+    second: {fileID: 2100000, guid: 46379b3e183d43943a834b12ad52f7b2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: spot_circle.mat
+    second: {fileID: 2100000, guid: 0071765a68666a44e84ccb71954711b5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: trippy_pojection.mat
+    second: {fileID: 2100000, guid: 92619c9333efb2a4d83b0d9fabfbf557, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 1
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
