@@ -77,8 +77,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: beer_bottle_01.mat
+    second: {fileID: 2100000, guid: 906c1f600939b3f469dde539f3c93d14, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: beer_bottle_2.mat
     second: {fileID: 2100000, guid: ac31172afc52eca4dafa0f1bf04cc466, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: beer_bottle_shard.mat
+    second: {fileID: 2100000, guid: 143b9e35f815e7944b291b948167bb7f, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -179,6 +189,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: light_hanging.mat
     second: {fileID: 2100000, guid: 23a5b5339cf67a046b1d696ab3b5a34e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: master_can.mat
+    second: {fileID: 2100000, guid: a43a3af9d047e3849b2674792908c1ff, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
