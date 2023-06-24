@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using UnityEngine;
 using YARG.Settings.Metadata;
 using YARG.Settings.Types;
+using YARG.Util;
 
 namespace YARG.Settings {
 	public static partial class SettingsManager {
@@ -39,6 +40,8 @@ namespace YARG.Settings {
 					"ShowHitWindow",
 					"UseCymbalModelsInFiveLane",
 					"KickBounce",
+					"ShowCursorTimer",
+					"PressThreshold",
 					"AmIAwesome"
 				}
 			},
@@ -191,7 +194,8 @@ namespace YARG.Settings {
 					"TrackFadePosition",
 					"TrackFadeSize",
 					new HeaderMetadata("Other"),
-					"DisableTextNotifications"
+					"DisableTextNotifications",
+					"LyricBackground"
 				}
 			},
 			new() {
@@ -204,7 +208,7 @@ namespace YARG.Settings {
 			},
 		};
 
-		private static string SettingsFile => Path.Combine(GameManager.PersistentDataPath, "settings.json");
+		private static string SettingsFile => Path.Combine(PathHelper.PersistentDataPath, "settings.json");
 
 		public static void LoadSettings() {
 			SettingContainer.IsLoading = true;

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29fa0085f50d5e54f8144f766051a691, type: 3}
   m_Name: FilmGrain
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   type:
     m_OverrideState: 1
     m_Value: 2
@@ -40,10 +40,10 @@ MonoBehaviour:
   active: 1
   threshold:
     m_OverrideState: 1
-    m_Value: 0.4
+    m_Value: 0.15
   intensity:
     m_OverrideState: 1
-    m_Value: 3.01
+    m_Value: 0.58
   scatter:
     m_OverrideState: 1
     m_Value: 0.403
@@ -112,13 +112,13 @@ MonoBehaviour:
     m_Value: 0
   focusDistance:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 13.41
   aperture:
     m_OverrideState: 1
     m_Value: 1
   focalLength:
     m_OverrideState: 1
-    m_Value: 22
+    m_Value: 38
   bladeCount:
     m_OverrideState: 1
     m_Value: 5
@@ -181,10 +181,10 @@ MonoBehaviour:
           inWeight: 0
           outWeight: 0
         - serializedVersion: 3
-          time: 0.22075471
-          value: 0.054901958
-          inSlope: 0.39589158
-          outSlope: 0.39589158
+          time: 0.16206262
+          value: 0.034482777
+          inSlope: 0.25371492
+          outSlope: 0.25371492
           tangentMode: 0
           weightedMode: 0
           inWeight: 0
@@ -367,7 +367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 899c54efeace73346a0a16faa3afe726, type: 3}
   m_Name: Vignette
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   color:
     m_OverrideState: 0
     m_Value: {r: 0, g: 0, b: 0, a: 1}
@@ -398,4 +398,4 @@ MonoBehaviour:
   active: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 0.159
+    m_Value: 0.061
