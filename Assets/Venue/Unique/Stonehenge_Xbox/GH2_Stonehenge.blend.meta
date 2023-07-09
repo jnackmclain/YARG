@@ -32,6 +32,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Material #374.mat
+    second: {fileID: 2100000, guid: b4f1442953491654bb41ce47cc0c819a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Material #375.mat
     second: {fileID: 2100000, guid: 4c0c28c78622d574fa3767d3518e36ef, type: 2}
   - first:
@@ -67,6 +72,36 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: crowd_area_encore.mat
+    second: {fileID: 2100000, guid: 5c6203051798c174cac550b87e5fa0b6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: crowd_area_left.mat
+    second: {fileID: 2100000, guid: 469edccc1a0f6e3429650ceb0613cd9e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: crowd_area_left_hill.mat
+    second: {fileID: 2100000, guid: 23c34aa2319730d4b91346e5aed16966, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: crowd_area_near.mat
+    second: {fileID: 2100000, guid: e1869694c27f26e4e8175564dbe1e154, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: crowd_area_right.mat
+    second: {fileID: 2100000, guid: 84a28632674ced5489ace784b23e96a6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: crowd_center.mat
+    second: {fileID: 2100000, guid: ecca3c587f725ad4597846b168feff22, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: crowd_still.mat
     second: {fileID: 2100000, guid: a2c1b40d60ab27846ba02d36433f4430, type: 2}
   - first:
@@ -74,6 +109,16 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: dark_blue.mat
     second: {fileID: 2100000, guid: edf5598dc3de31249aad4cd240f06f55, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: fire_glow1.mat
+    second: {fileID: 2100000, guid: 8e04d884964589d4d9bfe1d934ce76c7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: french.mat
+    second: {fileID: 2100000, guid: e5ebc6d811ba87249bc34ab2e15d1a28, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -97,6 +142,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: italian.mat
+    second: {fileID: 2100000, guid: 557682e42ecc4654eb47ec42f6f7e94b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: lantern_flare.mat
     second: {fileID: 2100000, guid: 5903a3e4ad9b91c47a995cd10099370b, type: 2}
   - first:
@@ -104,6 +154,21 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: light_body.mat
     second: {fileID: 2100000, guid: 4e848d11cc2ac7f4f83e858cef5fa5c9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lightning.mat
+    second: {fileID: 2100000, guid: f063d135af11c194287fd1fb3ac23473, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lightning1.mat
+    second: {fileID: 2100000, guid: 2bb5106ecd25924418439abb73f237a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: live_and_let_rock.mat
+    second: {fileID: 2100000, guid: 1325cd92da6f8794ba64d8b3650d3b26, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -137,6 +202,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: op_stagelight03.mat
+    second: {fileID: 2100000, guid: 65e7bd7370a3d5345a801ff230cb4db4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: search_lens.mat
     second: {fileID: 2100000, guid: 4f7a1520d50814347b16b11786a452a8, type: 2}
   - first:
@@ -149,6 +219,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: sky_second_stage.mat
     second: {fileID: 2100000, guid: a4344eb26fc2a92429ff379e256039bd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: spanish.mat
+    second: {fileID: 2100000, guid: e849c47be243afa47a0d8e2e516ec526, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -227,8 +302,23 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: ufo_beam.mat
+    second: {fileID: 2100000, guid: c108d986cf3b1ce4f9a5b6324612a9b2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ufo_parent.mat
+    second: {fileID: 2100000, guid: c7e669c250942564eac6c82efad1e43f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: ufo_particle.mat
     second: {fileID: 2100000, guid: 21950072edf497a4898b1de41059d903, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: win_beam.mat
+    second: {fileID: 2100000, guid: ccf12045a2948a44dbdf28599dc0eca8, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
