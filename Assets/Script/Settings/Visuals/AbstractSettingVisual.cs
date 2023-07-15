@@ -3,25 +3,32 @@ using UnityEngine.Localization;
 using UnityEngine.Localization.Components;
 using YARG.Settings.Types;
 
-namespace YARG.Settings.Visuals {
-	public abstract class AbstractSettingVisual<T> : MonoBehaviour, ISettingVisual where T : ISettingType {
-		[SerializeField]
-		private LocalizeStringEvent settingText;
+namespace YARG.Settings.Visuals
+{
+    public abstract class AbstractSettingVisual<T> : MonoBehaviour, ISettingVisual where T : ISettingType
+    {
+        [SerializeField]
+        private LocalizeStringEvent settingText;
 
-		protected T Setting { get; private set; }
+        public string SettingName { get; private set; }
 
-		public void SetSetting(string name) {
-			settingText.StringReference = new LocalizedString {
-				TableReference = "Settings",
-				TableEntryReference = name
-			};
+        protected T Setting { get; private set; }
 
-			Setting = (T) SettingsManager.GetSettingByName(name);
+        public void SetSetting(string name)
+        {
+            SettingName = name;
 
-			OnSettingInit();
-		}
+            settingText.StringReference = new LocalizedString
+            {
+                TableReference = "Settings", TableEntryReference = name
+            };
 
-		protected abstract void OnSettingInit();
-		protected abstract void RefreshVisual();
-	}
+            Setting = (T) SettingsManager.GetSettingByName(name);
+
+            OnSettingInit();
+        }
+
+        protected abstract void OnSettingInit();
+        public abstract void RefreshVisual();
+    }
 }

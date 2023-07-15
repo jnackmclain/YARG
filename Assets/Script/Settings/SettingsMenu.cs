@@ -1,299 +1,423 @@
+using System.Collections.Generic;
+using System.Linq;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Components;
 using UnityEngine.UI;
-using YARG.Metadata;
+using YARG.Input;
+using YARG.Settings.Metadata;
+using YARG.Settings.Types;
 using YARG.Settings.Visuals;
 using YARG.UI.MusicLibrary;
 using YARG.Util;
 
-namespace YARG.Settings {
-	public class SettingsMenu : MonoBehaviour {
-		[SerializeField]
-		private GameObject fullContainer;
-		[SerializeField]
-		private GameObject halfContainer;
-		[SerializeField]
-		private Transform previewContainer;
+namespace YARG.Settings
+{
+    [DefaultExecutionOrder(-10000)]
+    public class SettingsMenu : MonoBehaviour
+    {
+        public static SettingsMenu Instance { get; private set; }
 
-		[Space]
-		[SerializeField]
-		private Transform tabsContainer;
-		[SerializeField]
-		private Transform settingsContainer;
+        [SerializeField]
+        private GameObject _fullContainer;
 
-		[Space]
-		[SerializeField]
-		private Transform halfSettingsContainer;
+        [SerializeField]
+        private GameObject _halfContainer;
 
-		[Space]
-		[SerializeField]
-		private GameObject tabPrefab;
-		[SerializeField]
-		private GameObject buttonPrefab;
-		[SerializeField]
-		private GameObject headerPrefab;
-		[SerializeField]
-		private GameObject directoryPrefab;
+        [SerializeField]
+        private Transform _previewContainer;
 
-		[Space]
-		[SerializeField]
-		private RenderTexture previewRenderTexture;
-		[SerializeField]
-		private RawImage previewRawImage;
+        [Space]
+        [SerializeField]
+        private Transform _tabsContainer;
 
-		private string _currentTab;
-		public string CurrentTab {
-			get => _currentTab;
-			set {
-				_currentTab = value;
+        [SerializeField]
+        private Transform _settingsContainer;
 
-				UpdateSettingsForTab();
-			}
-		}
+        [Space]
+        [SerializeField]
+        private Transform _halfSettingsContainer;
 
-		public bool UpdateSongLibraryOnExit { get; set; } = false;
+        [Space]
+        [SerializeField]
+        private GameObject _tabPrefab;
 
-		private void OnEnable() {
-			ReturnToFirstTab();
-			UpdateTabs();
-		}
+        [SerializeField]
+        private GameObject _buttonPrefab;
 
-		private async UniTask OnDisable() {
-			DestroyPreview();
+        [SerializeField]
+        private GameObject _headerPrefab;
 
-			// Save on close
-			SettingsManager.SaveSettings();
+        [SerializeField]
+        private GameObject _directoryPrefab;
 
-			if (UpdateSongLibraryOnExit) {
-				UpdateSongLibraryOnExit = false;
+        [SerializeField]
+        private GameObject _dropdownPrefab;
 
-				// Do a song refresh if requested
-				LoadingManager.Instance.QueueSongRefresh(true);
-				await LoadingManager.Instance.StartLoad();
+        [Space]
+        [SerializeField]
+        private RawImage _previewRawImage;
 
-				// Then refresh song select
-				SongSelection.refreshFlag = true;
-			}
-		}
+        private string _currentTab;
 
-		public void UpdateSettingsForTab() {
-			if (CurrentTab == "_SongFolderManager") {
-				UpdateSongFolderManager();
+        private readonly List<ISettingVisual> _settingVisuals = new();
+        private readonly List<SettingsPresetDropdown> _settingDropdowns = new();
 
-				return;
-			}
+        public string CurrentTab
+        {
+            get => _currentTab;
+            set
+            {
+                _currentTab = value;
 
-			var tabInfo = SettingsManager.GetTabByName(CurrentTab);
+                UpdateSettingsForTab();
+            }
+        }
 
-			if (string.IsNullOrEmpty(tabInfo.previewPath)) {
-				if (!fullContainer.activeSelf) {
-					fullContainer.gameObject.SetActive(true);
-					halfContainer.gameObject.SetActive(false);
+        public bool UpdateSongLibraryOnExit { get; set; } = false;
 
-					UpdateTabs();
-				}
+        private bool _ready;
 
-				UpdateSettings(settingsContainer);
-			} else {
-				if (!halfContainer.activeSelf) {
-					halfContainer.gameObject.SetActive(true);
-					fullContainer.gameObject.SetActive(false);
-				}
+        private void Awake()
+        {
+            Instance = this;
+            gameObject.SetActive(false);
 
-				UpdateSettings(halfSettingsContainer);
-			}
+            _ready = true;
+        }
 
-			UpdatePreview(tabInfo);
-		}
+        private void OnEnable()
+        {
+            if (!_ready)
+            {
+                return;
+            }
 
-		private void UpdateTabs() {
-			// Destroy all previous tabs
-			foreach (Transform t in tabsContainer) {
-				Destroy(t.gameObject);
-			}
+            // Set navigation scheme
+            Navigator.Instance.PushScheme(new NavigationScheme(new()
+            {
+                new NavigationScheme.Entry(MenuAction.Back, "Back", () => { gameObject.SetActive(false); })
+            }, true));
 
-			// Then, create new tabs!
-			foreach (var tab in SettingsManager.SETTINGS_TABS) {
-				// Skip tabs that aren't shown in game, if we are in game
-				if (!tab.showInGame && GameManager.Instance.CurrentScene == SceneIndex.PLAY) {
-					continue;
-				}
+            ReturnToFirstTab();
+            UpdateTabs();
+        }
 
-				var go = Instantiate(tabPrefab, tabsContainer);
-				go.GetComponent<SettingsTab>().SetTab(tab.name, tab.icon);
-			}
-		}
+        private async UniTask OnDisable()
+        {
+            if (!_ready)
+            {
+                return;
+            }
 
-		private void UpdateSettings(Transform container) {
-			// Destroy all previous settings
-			foreach (Transform t in container) {
-				Destroy(t.gameObject);
-			}
+            Navigator.Instance.PopScheme();
 
-			foreach (var tab in SettingsManager.SETTINGS_TABS) {
-				// Look for the tab
-				if (tab.name != CurrentTab) {
-					continue;
-				}
+            DestroyPreview();
 
-				// Once we've found the tab, add the settings
-				foreach (var settingMetadata in tab.settings) {
-					if (settingMetadata is ButtonRowMetadata buttonRow) {
-						// Spawn the button
-						var go = Instantiate(buttonPrefab, container);
-						go.GetComponent<SettingsButton>().SetInfo(buttonRow.Buttons[0]);
-					} else if (settingMetadata is HeaderMetadata header) {
-						// Spawn in the header
-						SpawnHeader(container, $"Header.{header.HeaderName}");
-					} else if (settingMetadata is FieldMetadata field) {
-						var setting = SettingsManager.GetSettingByName(field.FieldName);
+            // Save on close
+            SettingsManager.SaveSettings();
 
-						// Spawn the setting
-						var settingPrefab = Addressables.LoadAssetAsync<GameObject>(setting.AddressableName).WaitForCompletion();
-						var go = Instantiate(settingPrefab, container);
-						go.GetComponent<ISettingVisual>().SetSetting(field.FieldName);
-					}
-				}
+            if (UpdateSongLibraryOnExit)
+            {
+                UpdateSongLibraryOnExit = false;
 
-				// Then we're good!
-				break;
-			}
-		}
+                // Do a song refresh if requested
+                LoadingManager.Instance.QueueSongRefresh(true);
+                await LoadingManager.Instance.StartLoad();
 
-		public void UpdateSongFolderManager() {
-			UpdateSongLibraryOnExit = true;
+                // Then refresh song select
+                SongSelection.RefreshFlag = true;
+            }
+        }
 
-			// Destroy all previous settings
-			foreach (Transform t in settingsContainer) {
-				Destroy(t.gameObject);
-			}
+        public void UpdateSettingsForTab()
+        {
+            if (CurrentTab == "_SongFolderManager")
+            {
+                UpdateSongFolderManager();
 
-			// Spawn header
-			SpawnHeader(settingsContainer, "Header.Cache");
+                return;
+            }
 
-			// Spawn refresh all button
-			{
-				var go = Instantiate(buttonPrefab, settingsContainer);
-				go.GetComponent<SettingsButton>().SetCustomCallback(async () => {
-					LoadingManager.Instance.QueueSongRefresh(false);
-					await LoadingManager.Instance.StartLoad();
-				}, "RefreshAllCaches");
-			}
+            var tabInfo = SettingsManager.GetTabByName(CurrentTab);
 
-			// Spawn header
-			SpawnHeader(settingsContainer, "Header.SongFolders");
+            if (string.IsNullOrEmpty(tabInfo.PreviewPath))
+            {
+                if (!_fullContainer.activeSelf)
+                {
+                    _fullContainer.gameObject.SetActive(true);
+                    _halfContainer.gameObject.SetActive(false);
 
-			// Spawn add folder button
-			{
-				var go = Instantiate(buttonPrefab, settingsContainer);
-				go.GetComponent<SettingsButton>().SetCustomCallback(() => {
-					SettingsManager.Settings.SongFolders.Add(string.Empty);
+                    UpdateTabs();
+                }
 
-					// Refresh everything
-					UpdateSongFolderManager();
-				}, "AddFolder");
-			}
+                UpdateSettings(_settingsContainer);
+            }
+            else
+            {
+                if (!_halfContainer.activeSelf)
+                {
+                    _halfContainer.gameObject.SetActive(true);
+                    _fullContainer.gameObject.SetActive(false);
+                }
 
-			// Create all of the directories
-			for (int i = 0; i < SettingsManager.Settings.SongFolders.Count; i++) {
-				var path = SettingsManager.Settings.SongFolders[i];
+                UpdateSettings(_halfSettingsContainer);
+            }
 
-				var go = Instantiate(directoryPrefab, settingsContainer);
-				go.GetComponent<SettingsDirectory>().SetIndex(i, false);
-			}
+            UpdatePreview(tabInfo);
+        }
 
-			/*
+        private void UpdateTabs()
+        {
+            // Destroy all previous tabs
+            foreach (Transform t in _tabsContainer)
+            {
+                Destroy(t.gameObject);
+            }
 
-			// Spawn header
-			SpawnHeader(settingsContainer, "Header.SongUpgrades");
+            // Then, create new tabs!
+            foreach (var tab in SettingsManager.SettingsTabs)
+            {
+                // Skip tabs that aren't shown in game, if we are in game
+                if (!tab.ShowInPlayMode && GameManager.Instance.CurrentScene == SceneIndex.PLAY)
+                {
+                    continue;
+                }
 
-			// Spawn add upgrade folder button
-			{
-				var go = Instantiate(buttonPrefab, settingsContainer);
-				go.GetComponent<SettingsButton>().SetCustomCallback(() => {
-					SettingsManager.Settings.SongUpgradeFolders.Add(string.Empty);
+                var go = Instantiate(_tabPrefab, _tabsContainer);
+                go.GetComponent<SettingsTab>().SetTab(tab.Name, tab.Icon);
+            }
+        }
 
-					// Refresh everything
-					UpdateSongFolderManager();
-				}, "AddUpgradeFolder");
-			}
+        private void UpdateSettings(Transform container)
+        {
+            _settingVisuals.Clear();
+            _settingDropdowns.Clear();
 
-			// Create all of the song upgrade directories
-			for (int i = 0; i < SettingsManager.Settings.SongUpgradeFolders.Count; i++) {
-				var path = SettingsManager.Settings.SongUpgradeFolders[i];
+            // Destroy all previous settings
+            foreach (Transform t in container)
+            {
+                Destroy(t.gameObject);
+            }
 
-				var go = Instantiate(directoryPrefab, settingsContainer);
-				go.GetComponent<SettingsDirectory>().SetIndex(i, true);
-			}
+            foreach (var tab in SettingsManager.SettingsTabs)
+            {
+                // Look for the tab
+                if (tab.Name != CurrentTab)
+                {
+                    continue;
+                }
 
-			*/
-		}
+                // Once we've found the tab, add the settings
+                foreach (var settingMetadata in tab.Settings)
+                {
+                    if (settingMetadata is ButtonRowMetadata buttonRow)
+                    {
+                        // Spawn the button
+                        var go = Instantiate(_buttonPrefab, container);
+                        go.GetComponent<SettingsButton>().SetInfo(buttonRow.Buttons);
+                    }
+                    else if (settingMetadata is HeaderMetadata header)
+                    {
+                        // Spawn in the header
+                        SpawnHeader(container, $"Header.{header.HeaderName}");
+                    }
+                    else if (settingMetadata is FieldMetadata field)
+                    {
+                        var setting = SettingsManager.GetSettingByName(field.FieldName);
 
-		private void SpawnHeader(Transform container, string localizationKey) {
-			// Spawn the header
-			var go = Instantiate(headerPrefab, container);
+                        // Spawn the setting
+                        var settingPrefab = Addressables.LoadAssetAsync<GameObject>(setting.AddressableName)
+                            .WaitForCompletion();
+                        var go = Instantiate(settingPrefab, container);
 
-			// Set header text
-			go.GetComponentInChildren<LocalizeStringEvent>().StringReference = new LocalizedString {
-				TableReference = "Settings",
-				TableEntryReference = localizationKey
-			};
-		}
+                        // Set the setting, and cache the object
+                        var visual = go.GetComponent<ISettingVisual>();
+                        visual.SetSetting(field.FieldName);
+                        _settingVisuals.Add(visual);
+                    }
+                    else if (settingMetadata is PresetDropdownMetadata dropdown)
+                    {
+                        // Spawn the dropdown
+                        var go = Instantiate(_dropdownPrefab, container);
 
-		private void UpdatePreview(SettingsManager.Tab tabInfo) {
-			DestroyPreview();
+                        // Set the setting, and cache the object
+                        var settingsDropdown = go.GetComponent<SettingsPresetDropdown>();
+                        settingsDropdown.SetInfo(dropdown);
+                        _settingDropdowns.Add(settingsDropdown);
+                    }
+                }
 
-			if (string.IsNullOrEmpty(tabInfo.previewPath)) {
-				return;
-			}
+                // Then we're good!
+                break;
+            }
+        }
 
-			// Spawn prefab
-			var previewPrefab = Addressables.LoadAssetAsync<GameObject>(tabInfo.previewPath).WaitForCompletion();
-			Instantiate(previewPrefab, previewContainer);
+        public void UpdateSongFolderManager()
+        {
+            UpdateSongLibraryOnExit = true;
 
-			// Set render texture
-			CameraPreviewTexture.SetAllPreviews();
+            // Destroy all previous settings
+            foreach (Transform t in _settingsContainer)
+            {
+                Destroy(t.gameObject);
+            }
 
-			// Size raw image
-			previewRawImage.texture = CameraPreviewTexture.PreviewTexture;
-			previewRawImage.uvRect = previewRawImage.rectTransform.ToViewportSpaceCentered(v: false);
-		}
+            // Spawn header
+            SpawnHeader(_settingsContainer, "Header.Cache");
 
-		private void DestroyPreview() {
-			if (previewContainer == null)
-				return;
+            // Spawn refresh all button
+            {
+                var go = Instantiate(_buttonPrefab, _settingsContainer);
+                go.GetComponent<SettingsButton>().SetCustomCallback(async () =>
+                {
+                    LoadingManager.Instance.QueueSongRefresh(false);
+                    await LoadingManager.Instance.StartLoad();
+                }, "RefreshAllCaches");
+            }
 
-			foreach (Transform t in previewContainer) {
-				Destroy(t.gameObject);
-			}
-		}
+            // Spawn header
+            SpawnHeader(_settingsContainer, "Header.SongFolders");
 
-		public void ReturnToFirstTab() {
-			// Select the first tab
-			foreach (var tab in SettingsManager.SETTINGS_TABS) {
-				// Skip tabs that aren't shown in game, if we are in game
-				if (!tab.showInGame && GameManager.Instance.CurrentScene == SceneIndex.PLAY) {
-					continue;
-				}
+            // Spawn add folder button
+            {
+                var go = Instantiate(_buttonPrefab, _settingsContainer);
+                go.GetComponent<SettingsButton>().SetCustomCallback(() =>
+                {
+                    SettingsManager.Settings.SongFolders.Add(string.Empty);
 
-				CurrentTab = tab.name;
-				break;
-			}
-		}
+                    // Refresh everything
+                    UpdateSongFolderManager();
+                }, "AddFolder");
+            }
 
-		public void ForceShowCurrentTabInFull() {
-			if (fullContainer.activeSelf) {
-				return;
-			}
+            // Create all of the directories
+            for (int i = 0; i < SettingsManager.Settings.SongFolders.Count; i++)
+            {
+                var go = Instantiate(_directoryPrefab, _settingsContainer);
+                go.GetComponent<SettingsDirectory>().SetIndex(i);
+            }
+        }
 
-			fullContainer.gameObject.SetActive(true);
-			halfContainer.gameObject.SetActive(false);
+        private void SpawnHeader(Transform container, string localizationKey)
+        {
+            // Spawn the header
+            var go = Instantiate(_headerPrefab, container);
 
-			UpdateTabs();
-			UpdateSettings(settingsContainer);
-		}
-	}
+            // Set header text
+            go.GetComponentInChildren<LocalizeStringEvent>().StringReference = new LocalizedString
+            {
+                TableReference = "Settings", TableEntryReference = localizationKey
+            };
+        }
+
+        private void UpdatePreview(SettingsManager.Tab tabInfo)
+        {
+            DestroyPreview();
+
+            if (string.IsNullOrEmpty(tabInfo.PreviewPath))
+            {
+                return;
+            }
+
+            // Spawn prefab
+            var previewPrefab = Addressables.LoadAssetAsync<GameObject>(tabInfo.PreviewPath).WaitForCompletion();
+            Instantiate(previewPrefab, _previewContainer);
+
+            // Set render texture
+            CameraPreviewTexture.SetAllPreviews();
+
+            // Size raw image
+            _previewRawImage.texture = CameraPreviewTexture.PreviewTexture;
+            var rect = _previewRawImage.rectTransform.ToViewportSpaceCentered(v: false);
+            rect.y = 0f;
+            _previewRawImage.uvRect = rect;
+        }
+
+        private void DestroyPreview()
+        {
+            if (_previewContainer == null) return;
+
+            foreach (Transform t in _previewContainer)
+            {
+                Destroy(t.gameObject);
+            }
+        }
+
+        public void ReturnToFirstTab()
+        {
+            // Select the first tab
+            foreach (var tab in SettingsManager.SettingsTabs)
+            {
+                // Skip tabs that aren't shown in game, if we are in game
+                if (!tab.ShowInPlayMode && GameManager.Instance.CurrentScene == SceneIndex.PLAY)
+                {
+                    continue;
+                }
+
+                CurrentTab = tab.Name;
+                break;
+            }
+        }
+
+        public void ForceShowCurrentTabInFull()
+        {
+            if (_fullContainer.activeSelf)
+            {
+                return;
+            }
+
+            _fullContainer.gameObject.SetActive(true);
+            _halfContainer.gameObject.SetActive(false);
+
+            UpdateTabs();
+            UpdateSettings(_settingsContainer);
+        }
+
+        public void UpdateSpecificSetting(string settingName)
+        {
+            // If the settings menu is not open, ignore
+            if (!gameObject.activeSelf)
+            {
+                return;
+            }
+
+            // Nothing in the song folder manager we can update
+            if (CurrentTab == "_SongFolderManager")
+            {
+                return;
+            }
+
+            // Refresh all of the settings with that name
+            foreach (var settingVisual in _settingVisuals)
+            {
+                if (settingVisual.SettingName != settingName)
+                {
+                    continue;
+                }
+
+                settingVisual.RefreshVisual();
+            }
+        }
+
+        public void UpdatePresetDropdowns(ISettingType withSetting)
+        {
+            // If the settings menu is not open, ignore
+            if (!gameObject.activeSelf)
+            {
+                return;
+            }
+
+            // Refresh all of the settings with that name
+            foreach (var dropdown in _settingDropdowns)
+            {
+                if (dropdown.ModifiedSettings.Select(SettingsManager.GetSettingByName).Contains(withSetting))
+                {
+                    dropdown.ForceUpdateValue();
+                }
+            }
+        }
+    }
 }

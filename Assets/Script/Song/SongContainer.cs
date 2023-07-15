@@ -1,78 +1,110 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 using YARG.Settings;
+using YARG.Util;
 
-namespace YARG.Song {
-	public static class SongContainer {
+namespace YARG.Song
+{
+    public static class SongContainer
+    {
+        private static readonly List<SongEntry> _songs;
+        private static readonly Dictionary<string, SongEntry> _songsByHash;
 
-		public static string CacheFolder => Path.Combine(GameManager.PersistentDataPath, "caches");
+        public static IReadOnlyList<SongEntry> Songs => _songs;
+        public static IReadOnlyDictionary<string, SongEntry> SongsByHash => _songsByHash;
 
-		private static readonly List<SongEntry> _songs;
-		private static readonly Dictionary<string, SongEntry> _songsByHash;
+        static SongContainer()
+        {
+            _songs = new List<SongEntry>();
+            _songsByHash = new Dictionary<string, SongEntry>();
+        }
 
-		public static List<string> SongFolders => SettingsManager.Settings.SongFolders;
-		public static List<string> SongUpgradeFolders => SettingsManager.Settings.SongUpgradeFolders;
+        public static void AddSongs(ICollection<SongEntry> songs)
+        {
+            _songs.AddRange(songs);
 
-		public static IReadOnlyList<SongEntry> Songs => _songs;
-		public static IReadOnlyDictionary<string, SongEntry> SongsByHash => _songsByHash;
+            foreach (var songEntry in songs)
+            {
+                if (_songsByHash.ContainsKey(songEntry.Checksum)) continue;
 
-		static SongContainer() {
-			_songs = new List<SongEntry>();
-			_songsByHash = new Dictionary<string, SongEntry>();
-		}
+                _songsByHash.Add(songEntry.Checksum, songEntry);
+            }
 
-		public static void AddSongs(ICollection<SongEntry> songs) {
-			_songs.AddRange(songs);
+            TrySelectedSongReset();
+        }
 
-			foreach (var songEntry in songs) {
-				if (_songsByHash.ContainsKey(songEntry.Checksum))
-					continue;
+        public static async UniTask<List<CacheFolder>> ScanAllFolders(bool fast, Action<SongScanner> updateUi = null)
+        {
+            _songs.Clear();
+            _songsByHash.Clear();
 
-				_songsByHash.Add(songEntry.Checksum, songEntry);
-			}
-		}
+            // Add setlists as portable folder if installed
+            IEnumerable<string> portableFolders = null;
+            if (!string.IsNullOrEmpty(PathHelper.SetlistPath))
+            {
+                portableFolders = new[]
+                {
+                    PathHelper.SetlistPath
+                };
+            }
 
-		public static async UniTask<List<string>> ScanAllFolders(bool fast, Action<SongScanner> updateUi = null) {
-			_songs.Clear();
-			_songsByHash.Clear();
+            var scanner = new SongScanner(SettingsManager.Settings.SongFolders, portableFolders);
+            var output = await scanner.StartScan(fast, updateUi);
 
-			var scanner = new SongScanner(SongFolders);
-			var output = await scanner.StartScan(fast, updateUi);
+            AddSongs(output.SongEntries);
+            return output.ErroredCaches;
+        }
 
-			AddSongs(output.SongEntries);
-			return output.ErroredCaches;
-		}
+        public static async UniTask ScanFolders(ICollection<CacheFolder> folders, bool fast,
+            Action<SongScanner> updateUi = null)
+        {
+            var songsToRemove = _songs.Where(song => folders.Any(i => i.Folder == song.CacheRoot)).ToList();
 
-		public static async UniTask ScanFolders(ICollection<string> folders, bool fast, Action<SongScanner> updateUi = null) {
-			var songsToRemove = _songs.Where(song => folders.Contains(song.CacheRoot)).ToList();
-			
-			_songs.RemoveAll(x => songsToRemove.Contains(x));
-			foreach (var song in songsToRemove) {
-				_songsByHash.Remove(song.Checksum);
-			}
-			
-			var scanner = new SongScanner(folders);
-			var songs = await scanner.StartScan(fast, updateUi);
+            _songs.RemoveAll(x => songsToRemove.Contains(x));
+            foreach (var song in songsToRemove)
+            {
+                _songsByHash.Remove(song.Checksum);
+            }
 
-			AddSongs(songs.SongEntries);
-		}
-		
-		public static async UniTask ScanSingleFolder(string path, bool fast, Action<SongScanner> updateUi = null) {
-			var songsToRemove = _songs.Where(song => song.CacheRoot == path).ToList();
+            var scanner = new SongScanner(folders);
+            var songs = await scanner.StartScan(fast, updateUi);
 
-			_songs.RemoveAll(x => songsToRemove.Contains(x));
-			foreach (var song in songsToRemove) {
-				_songsByHash.Remove(song.Checksum);
-			}
+            AddSongs(songs.SongEntries);
+        }
 
-			var scanner = new SongScanner(new[] { path });
-			var songs = await scanner.StartScan(fast, updateUi);
+        public static async UniTask ScanSingleFolder(string path, bool fast, Action<SongScanner> updateUi = null)
+        {
+            var songsToRemove = _songs.Where(song => song.CacheRoot == path).ToList();
 
-			AddSongs(songs.SongEntries);
-		}
+            _songs.RemoveAll(x => songsToRemove.Contains(x));
+            foreach (var song in songsToRemove)
+            {
+                _songsByHash.Remove(song.Checksum);
+            }
 
-	}
+            var scanner = new SongScanner(new[]
+            {
+                path
+            });
+            var songs = await scanner.StartScan(fast, updateUi);
+
+            AddSongs(songs.SongEntries);
+        }
+
+        private static void TrySelectedSongReset()
+        {
+            if (GameManager.Instance.SelectedSong == null)
+            {
+                return;
+            }
+
+            if (!_songsByHash.ContainsKey(GameManager.Instance.SelectedSong.Checksum))
+            {
+                GameManager.Instance.SelectedSong = null;
+            }
+        }
+    }
 }

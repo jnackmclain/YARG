@@ -1,27 +1,44 @@
 using System;
 using UnityEngine;
 
-namespace YARG.Settings.Types {
-	public class IntSetting : AbstractSetting<int> {
-		private int _data;
-		public override int Data {
-			get => _data;
-			set {
-				_data = Mathf.Clamp(value, Min, Max);
-				base.Data = value;
-			}
-		}
+namespace YARG.Settings.Types
+{
+    public class IntSetting : AbstractSetting<int>
+    {
+        private int _data;
 
-		public override string AddressableName => "Setting/Number";
+        public override int Data
+        {
+            get => _data;
+            set
+            {
+                _data = Mathf.Clamp(value, Min, Max);
+                base.Data = value;
+            }
+        }
 
-		public int Min { get; private set; }
-		public int Max { get; private set; }
+        public override string AddressableName => "Setting/Number";
 
-		public IntSetting(int value, int min = int.MinValue, int max = int.MaxValue, Action<int> onChange = null) : base(onChange) {
-			Min = min;
-			Max = max;
+        public int Min { get; private set; }
+        public int Max { get; private set; }
 
-			Data = value;
-		}
-	}
+        public IntSetting(int value, int min = int.MinValue, int max = int.MaxValue, Action<int> onChange = null) :
+            base(onChange)
+        {
+            Min = min;
+            Max = max;
+
+            _data = value;
+        }
+
+        public override bool IsSettingDataEqual(object obj)
+        {
+            if (obj is not int other)
+            {
+                return false;
+            }
+
+            return other == Data;
+        }
+    }
 }

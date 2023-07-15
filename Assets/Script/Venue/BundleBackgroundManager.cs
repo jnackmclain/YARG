@@ -1,97 +1,126 @@
-using System.Collections.Generic;
+using System;
 using System.IO;
 using UnityEngine;
+using YARG.PlayMode;
 using YARG.UI;
-
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
-namespace YARG.Venue {
-	public class BundleBackgroundManager : MonoBehaviour {
-		[SerializeField]
-		private Camera mainCamera;
+namespace YARG.Venue
+{
+    public class BundleBackgroundManager : MonoBehaviour
+    {
+        // DO NOT CHANGE THIS! It will break existing venues
+        public const string BACKGROUND_PREFAB_PATH = "Assets/_Background.prefab";
 
-		private RenderTexture bgTexture;
+        // DO NOT CHANGE the name of this! I *know* it doesn't follow naming conventions, but it will also break existing
+        // venues if we do change it.
+        //
+        // ReSharper disable once InconsistentNaming
+        [SerializeField]
+        private Camera mainCamera;
 
-		[HideInInspector]
-		public AssetBundle Bundle { get; set; }
+        public AssetBundle Bundle { get; set; }
 
-		private void Start() {
-			// Move object out of the way just in case
+        private void Awake()
+        {
+            // Move object out of the way, so its effects don't collide with the tracks
+            transform.position += Vector3.forward * 10_000f;
 
-			transform.position += Vector3.up * 1000;
-			bgTexture = new RenderTexture(Screen.currentResolution.width, Screen.currentResolution.height, 16, RenderTextureFormat.ARGB32);
-			bgTexture.Create();
+            // Destroy the default camera (venue has its own)
+            Destroy(Play.Instance.DefaultCamera.gameObject);
+        }
 
-			mainCamera.targetTexture = bgTexture;
-
-			GameUI.Instance.background.texture = bgTexture;
-		}
-
-		private void OnDestroy() {
-			bgTexture.Release();
-			Bundle.Unload(true);
-		}
+        private void OnDestroy()
+        {
+            Bundle.Unload(true);
+        }
 
 #if UNITY_EDITOR
-		// Code to export a background from the editor
-		// This honestly should be on a different class (and ideally on a completely different project as a template) but as a quick dirty PoC it will do for now
 
-		private GameObject tromboneBackground;
+        //
+        // HUGE thanks to the people over at Trombone Champ and NyxTheShield for giving us this code.
+        // This could not be done without them.
+        //
+        // Code to export a background from the editor.
+        //
 
-		[ContextMenu("Export Background")]
-		public void ExportBackground() {
-			tromboneBackground = gameObject;
-			string path = EditorUtility.SaveFilePanel("Save Background", string.Empty, "bg",
-				"yarground");
+        private GameObject _backgroundReference;
 
-			BuildTargetGroup selectedBuildTargetGroup = EditorUserBuildSettings.selectedBuildTargetGroup;
-			BuildTarget activeBuildTarget = EditorUserBuildSettings.activeBuildTarget;
+        [ContextMenu("Export Background")]
+        public void ExportBackground()
+        {
+            _backgroundReference = gameObject;
+            string path = EditorUtility.SaveFilePanel("Save Background", string.Empty, "bg", "yarground");
 
-			GameObject clonedTromboneBackground = null;
+            var selectedBuildTargetGroup = EditorUserBuildSettings.selectedBuildTargetGroup;
+            var activeBuildTarget = EditorUserBuildSettings.activeBuildTarget;
 
-			try {
-				if (!string.IsNullOrEmpty(path)) {
-					clonedTromboneBackground = Instantiate(tromboneBackground.gameObject);
+            GameObject clonedBackground = null;
 
-					string fileName = Path.GetFileName(path);
-					string folderPath = Path.GetDirectoryName(path);
+            try
+            {
+                if (string.IsNullOrEmpty(path))
+                {
+                    return;
+                }
 
-					// serialize tromboners (this one is not unity's fault, it's base game weirdness)
-					var trombonePaths = new List<string>() { "Assets/_Background.prefab" };
+                clonedBackground = Instantiate(_backgroundReference.gameObject);
 
-					PrefabUtility.SaveAsPrefabAsset(clonedTromboneBackground.gameObject, "Assets/_Background.prefab");
-					AssetBundleBuild assetBundleBuild = default;
-					assetBundleBuild.assetBundleName = fileName;
-					assetBundleBuild.assetNames = trombonePaths.ToArray();
+                string fileName = Path.GetFileName(path);
+                string folderPath = Path.GetDirectoryName(path);
 
-					BuildPipeline.BuildAssetBundles(Application.temporaryCachePath,
-						new AssetBundleBuild[] { assetBundleBuild }, BuildAssetBundleOptions.ForceRebuildAssetBundle,
-						EditorUserBuildSettings.activeBuildTarget);
-					EditorPrefs.SetString("currentBuildingAssetBundlePath", folderPath);
-					EditorUserBuildSettings.SwitchActiveBuildTarget(selectedBuildTargetGroup, activeBuildTarget);
+                var assetPaths = new[]
+                {
+                    BACKGROUND_PREFAB_PATH
+                };
 
-					foreach (var asset in trombonePaths) {
-						AssetDatabase.DeleteAsset(asset);
-					}
+                PrefabUtility.SaveAsPrefabAsset(clonedBackground.gameObject, BACKGROUND_PREFAB_PATH);
+                AssetBundleBuild assetBundleBuild = default;
+                assetBundleBuild.assetBundleName = fileName;
+                assetBundleBuild.assetNames = assetPaths;
 
-					if (File.Exists(path)) File.Delete(path);
+                BuildPipeline.BuildAssetBundles(Application.temporaryCachePath,
+                    new[]
+                    {
+                        assetBundleBuild
+                    }, BuildAssetBundleOptions.ForceRebuildAssetBundle,
+                    EditorUserBuildSettings.activeBuildTarget);
+                EditorPrefs.SetString("currentBuildingAssetBundlePath", folderPath);
+                EditorUserBuildSettings.SwitchActiveBuildTarget(selectedBuildTargetGroup, activeBuildTarget);
 
-					// Unity seems to save the file in lower case, which is a problem on Linux, as file systems are case sensitive there
-					File.Move(Path.Combine(Application.temporaryCachePath, fileName.ToLowerInvariant()), path);
+                foreach (var asset in assetPaths)
+                {
+                    AssetDatabase.DeleteAsset(asset);
+                }
 
-					AssetDatabase.Refresh();
+                // If the file exists, delete it (to replace it)
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
 
-					EditorUtility.DisplayDialog("Export Successful!", "Export Successful!", "OK");
+                // Unity seems to save the file in lower case, which is a problem on Linux, as file systems are case sensitive there
+                File.Move(Path.Combine(Application.temporaryCachePath, fileName.ToLowerInvariant()), path);
 
-					if (clonedTromboneBackground != null) DestroyImmediate(clonedTromboneBackground);
-				}
-			} catch {
-				if (clonedTromboneBackground != null) DestroyImmediate(clonedTromboneBackground);
-			}
+                AssetDatabase.Refresh();
 
-		}
+                EditorUtility.DisplayDialog("Export Successful!", "Export Successful!", "OK");
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("Failed to bundle background/venue.");
+                Debug.LogException(e);
+            }
+            finally
+            {
+                if (clonedBackground != null)
+                {
+                    DestroyImmediate(clonedBackground);
+                }
+            }
+        }
 #endif
-	}
+    }
 }

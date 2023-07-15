@@ -1,17 +1,23 @@
 using System.Collections.Generic;
+using System.Linq;
 
-namespace YARG.Metadata {
-	public class ButtonRowMetadata : AbstractMetadata {
-		public List<string> Buttons { get; private set; }
+namespace YARG.Settings.Metadata
+{
+    public class ButtonRowMetadata : AbstractMetadata
+    {
+        public string[] Buttons { get; private set; }
 
-		public ButtonRowMetadata(List<string> buttons) {
-			Buttons = buttons;
-		}
+        public ButtonRowMetadata(string button)
+        {
+            Buttons = new[]
+            {
+                button
+            };
+        }
 
-		public ButtonRowMetadata(string button) {
-			Buttons = new() {
-				button
-			};
-		}
-	}
+        public ButtonRowMetadata(params string[] buttons)
+        {
+            Buttons = buttons;
+        }
+    }
 }

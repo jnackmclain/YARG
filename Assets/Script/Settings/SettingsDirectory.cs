@@ -7,82 +7,75 @@ using UnityEngine;
 using YARG.Song;
 using YARG.Util;
 
-namespace YARG.Settings {
-	public class SettingsDirectory : MonoBehaviour {
-		[SerializeField]
-		private TextMeshProUGUI pathText;
-		[SerializeField]
-		private TextMeshProUGUI songCountText;
+namespace YARG.Settings
+{
+    public class SettingsDirectory : MonoBehaviour
+    {
+        private static List<string> SongFolders => SettingsManager.Settings.SongFolders;
 
-		private bool isUpgradeFolder;
-		private int index;
+        [SerializeField]
+        private TextMeshProUGUI pathText;
 
-		private List<string> _pathsReference;
-		private List<string> PathsReference {
-			get => _pathsReference;
-			set {
-				if (isUpgradeFolder) {
-					SettingsManager.Settings.SongUpgradeFolders = value;
-				} else {
-					SettingsManager.Settings.SongFolders = value;
-				}
-			}
-		}
+        [SerializeField]
+        private TextMeshProUGUI songCountText;
 
-		public void SetIndex(int index, bool isUpgradeFolder) {
-			this.index = index;
-			this.isUpgradeFolder = isUpgradeFolder;
+        private int _index;
 
-			if (isUpgradeFolder) {
-				_pathsReference = SettingsManager.Settings.SongUpgradeFolders;
-			} else {
-				_pathsReference = SettingsManager.Settings.SongFolders;
-			}
+        public void SetIndex(int index)
+        {
+            _index = index;
+            RefreshText();
+        }
 
-			RefreshText();
-		}
+        private void RefreshText()
+        {
+            if (string.IsNullOrEmpty(SongFolders[_index]))
+            {
+                pathText.text = "<i>No Folder</i>";
+                songCountText.text = "";
+            }
+            else
+            {
+                pathText.text = SongFolders[_index];
 
-		private void RefreshText() {
-			if (string.IsNullOrEmpty(PathsReference[index])) {
-				pathText.text = "<i>No Folder</i>";
-				songCountText.text = "";
-			} else {
-				pathText.text = PathsReference[index];
+                int songCount = SongContainer.Songs.Count(i =>
+                    PathHelper.PathsEqual(i.CacheRoot, SongFolders[_index]));
 
-				if (isUpgradeFolder) {
-					songCountText.text = "";
-				} else {
-					int songCount = SongContainer.Songs.Count(i =>
-						Utils.PathsEqual(i.CacheRoot, PathsReference[index]));
-					songCountText.text = $"{songCount} <alpha=#60>SONGS";
-				}
-			}
-		}
+                if (songCount == 0)
+                {
+                    songCountText.text = "<alpha=#60>SCAN NEEDED";
+                }
+                else
+                {
+                    songCountText.text = $"{songCount} <alpha=#60>SONGS";
+                }
+            }
+        }
 
-		public void Remove() {
-			// Remove the element
-			PathsReference.RemoveAt(index);
+        public void Remove()
+        {
+            // Remove the element
+            SongFolders.RemoveAt(_index);
 
-			// Refresh
-			GameManager.Instance.SettingsMenu.UpdateSongFolderManager();
-		}
+            // Refresh
+            SettingsMenu.Instance.UpdateSongFolderManager();
+        }
 
-		public void Browse() {
-			var startingDir = PathsReference[index];
-			StandaloneFileBrowser.OpenFolderPanelAsync("Choose Folder", startingDir, false, folder => {
-				if (folder == null || folder.Length == 0) {
-					return;
-				}
+        public void Browse()
+        {
+            var startingDir = SongFolders[_index];
+            FileExplorerHelper.OpenChooseFolder(startingDir, folder =>
+            {
+                SongFolders[_index] = folder;
+                RefreshText();
+            });
+        }
 
-				PathsReference[index] = folder[0];
-				RefreshText();
-			});
-		}
-
-		public async void Refresh() {
-			LoadingManager.Instance.QueueSongFolderRefresh(PathsReference[index]);
-			await LoadingManager.Instance.StartLoad();
-			RefreshText();
-		}
-	}
+        public async void Refresh()
+        {
+            LoadingManager.Instance.QueueSongFolderRefresh(SongFolders[_index]);
+            await LoadingManager.Instance.StartLoad();
+            RefreshText();
+        }
+    }
 }

@@ -1,26 +1,32 @@
 using System;
+using Cysharp.Threading.Tasks;
 
-namespace YARG {
-	public interface IStemChannel : IDisposable {
+namespace YARG.Audio
+{
+    public interface IStemChannel : IDisposable
+    {
+        public SongStem Stem { get; }
+        public double LengthD { get; }
+        public float LengthF => (float) LengthD;
 
-		public SongStem Stem { get; }
-		public double LengthD { get; }
-		public float LengthF => (float)LengthD;
-		
-		public double Volume { get; }
+        public double Volume { get; }
 
-		public int Load(bool isSpeedUp, float speed);
+        public event Action ChannelEnd;
 
-		public void FadeIn();
-		public void FadeOut();
-		
-		public void SetVolume(double newVolume);
-		
-		public void SetReverb(bool reverb);
+        public int Load(float speed);
 
-		public double GetPosition();
-		
-		public double GetLengthInSeconds();
+        public void FadeIn(float maxVolume);
+        public UniTask FadeOut();
 
-	}
+        public void SetVolume(double newVolume);
+
+        public void SetReverb(bool reverb);
+
+        public void SetWhammyPitch(float percent);
+
+        public double GetPosition(bool desyncCompensation = true);
+        public void SetPosition(double position, bool desyncCompensation = true);
+
+        public double GetLengthInSeconds();
+    }
 }
