@@ -8,112 +8,112 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: 22 - Default
-    second: {fileID: 2100000, guid: a24ad884f38ae92488b6586081017ac0, type: 2}
+    second: {fileID: 2100000, guid: 3bc9779c0d278334b8f9736047eb4c0a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material #354
-    second: {fileID: 2100000, guid: 7ed9847e9074cf54faa48cc94403b399, type: 2}
+    second: {fileID: 2100000, guid: c9ec70a54d777e64ca20de4d53dfdc4f, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material #356
-    second: {fileID: 2100000, guid: ae07d5e4c9afd124fa8dbfd5c9e70c21, type: 2}
+    second: {fileID: 2100000, guid: 39ae5e59a87eeaa40a03beda783c7661, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material #375
-    second: {fileID: 2100000, guid: d62b5b568d72d5b448278558c182d680, type: 2}
+    second: {fileID: 2100000, guid: f2c1838e80dc20541960807a35a83b1e, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material #388
-    second: {fileID: 2100000, guid: 9e9fed59ac863524fbeb0ffbee8540ae, type: 2}
+    second: {fileID: 2100000, guid: 1fc4d36794fbcb242933b8c8cbf9bbe5, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: amp
-    second: {fileID: 2100000, guid: a2df929def3e7674eb93f66a8d7a0477, type: 2}
+    second: {fileID: 2100000, guid: d0db857321e57564bae06c74047d131a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: amp_combo
-    second: {fileID: 2100000, guid: b8394344195cb1d4a8e8cdb2bd67c662, type: 2}
+    second: {fileID: 2100000, guid: fbb6aea59e34c63409848e2d71e59101, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: bass_amp
-    second: {fileID: 2100000, guid: 7f77b2b3e36ebcc48bfb052fe8588489, type: 2}
+    second: {fileID: 2100000, guid: 827721e0e02741946b932d052aa04834, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: bass_combo
-    second: {fileID: 2100000, guid: f29796ebcf9fee54994f5c1d5c98b332, type: 2}
+    second: {fileID: 2100000, guid: 0f5ca5c01d3dab14d9483ec653722970, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: grass
-    second: {fileID: 2100000, guid: 087c20ee97228bc448e7d7cb9862dc6d, type: 2}
+    second: {fileID: 2100000, guid: 02b877b24d415434094c2221293339c0, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: speaker_cone
-    second: {fileID: 2100000, guid: bbed811dd5a91ae4fa2df68ef2ed8797, type: 2}
+    second: {fileID: 2100000, guid: de9845ea39f64964b9bbf5e7a086b1e3, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: st_ampcone
-    second: {fileID: 2100000, guid: 132603cb500c46648977062845ad513d, type: 2}
+    second: {fileID: 2100000, guid: 9fb5900737e194a408e59e6004bcc48f, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: st_ampcone_nontrans
-    second: {fileID: 2100000, guid: 525cdc58aa802684488dbc5b89a708d4, type: 2}
+    second: {fileID: 2100000, guid: f4998478ff466aa45a31adbd13a5faea, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: st_rockolet
-    second: {fileID: 2100000, guid: f31c835d454b7784d84fed25f71599ca, type: 2}
+    second: {fileID: 2100000, guid: 9dc89590fac4f304fb5aca5d53f15418, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: st_speak01
-    second: {fileID: 2100000, guid: 6000a12f05028964a94a01c57de9cd28, type: 2}
+    second: {fileID: 2100000, guid: bd309b57780c94a448232b4e27a15974, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: st_speak_nontrans
-    second: {fileID: 2100000, guid: d99540072b6bf0c4cbc21aff389278db, type: 2}
+    second: {fileID: 2100000, guid: 2289761f164830848a1f9ed2a107289a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: st_stone01
-    second: {fileID: 2100000, guid: b46bb3801fb0a5241ad60d63a360611f, type: 2}
+    second: {fileID: 2100000, guid: 25fb8906ad1de2b47925d045ff960ed5, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: st_stone02
-    second: {fileID: 2100000, guid: eb4baa898c8e81b419eebd5ead3092fb, type: 2}
+    second: {fileID: 2100000, guid: 6314b080c46e81b4aa84fde0b27c4bf7, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: st_wood
-    second: {fileID: 2100000, guid: 5834a93d6e63d734694270d54ce773aa, type: 2}
+    second: {fileID: 2100000, guid: 4c58769af583e3f4391b21f11da5ba32, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: st_wood01
-    second: {fileID: 2100000, guid: aa2b943669b76b84f971bc61b02f395b, type: 2}
+    second: {fileID: 2100000, guid: 449e0e534125f344985546c64a865fb8, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: ufo
-    second: {fileID: 2100000, guid: 405266d201fca47478c60af8f0a1158e, type: 2}
+    second: {fileID: 2100000, guid: 783e9958c6b8016498df7af7d6549745, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: ufo_parent
-    second: {fileID: 2100000, guid: 057ec021dd4cf864fb8c34419e0cc2dc, type: 2}
+    second: {fileID: 2100000, guid: 847bd3e6cd9f44d4b847e06c46abd6bc, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
